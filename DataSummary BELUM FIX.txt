@@ -1,0 +1,55 @@
+-- DATABASE USER --
+
+Tbl Data Karyawan : NIM, Nama, NamaCabang, Jenis Kelamin, No HP, Alamat. // NIM Primary Key
+Tbl Data Pelanggan : No Pemesanan, Nama, Tgl Pemesanan, List Barang, QTY. // Nomor Pesanan Primary Key
+
+-- DATABASE BARANG --
+
+Tbl Data Kategori : ID, Nama Kategori. // ID Primary Key
+	> Tbl Data Barang : KodeBarang, Nama Barang, QTY Stok, Harga.
+	> Tbl Data Material : KodeMaterial, Nama Material, QTY Stok, Harga.
+
+-- DATABASE CABANG --
+Tbl Cabang : NamaCabang (PRIMARY KEY), Kota, Alamat.
+
+-- DATABASE LOGIN --
+
+Tbl Data Login : Username, Password.
+
+-- DATA DESIGN --
+
+	** FORM 1 **
+Form Login > Username && Password
+
+OPTION #1
+if(Username == "Admin" && Password == "admin")
+{
+	Form2.Show();
+}
+
+OPTION #2
+if(Username == TblDataKaryawan.Colomn.Username && Password == TblDataKaryawan.Colomn.Password)
+{
+	Form2.Show();
+}
+
+
+	** FORM 2 **
+
+TabControl :
+1. Data Pelanggan
+2. Data Karyawan
+3. Data Kategori
+4. Data Barang
+5. Data Material
+
+Menu :
+1. File > Delete, Exit
+2. About
+
+MessageBox > Exit
+MessageBox > Login
+MessageBox > Delete
+MessageBox > New, Edit (apakah data yang anda masukkan sudah benar?)
+
+DataGridView TblKaryawan, TblPelanggan, TblKategori, TblBarang, TblMaterial, TblCabang.
