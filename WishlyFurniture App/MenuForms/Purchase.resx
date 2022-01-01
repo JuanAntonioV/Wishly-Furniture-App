@@ -117,17 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtSearchBox.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAQxJREFUOE+9
-        ks9KxDAQxutDyKKCsI/hxT8P4AN4WNnbel9YbZuUXtomKSy720yldxF8Gn0MpX2HOmPnEizbKugPQvp9
-        mcxMk3h/SpBsJlKXd0KX90LBgjQvDdC2B1LBSmpohIanSFtFM+oa5yWtc2Q/WNHHwNdYF8dsfRGuH0+w
-        ozdKztZ3urahDpLqiC2HLgk0fro7ZMtFGphj9WeWvWCCF+zilqWLNDbAf05Z9oJFMkzwwNJlbAdYZMbS
-        hc+giVV1ypbD4BkQkbGWTvtXtyBNeYEV3nFscdC9j38HIisuMegjVPacNLUZGbihl0jz/rYVXFMFmdsz
-        tsYj8mJKmyMNV2z9HErCn/+J530C7LWa6IO22egAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
