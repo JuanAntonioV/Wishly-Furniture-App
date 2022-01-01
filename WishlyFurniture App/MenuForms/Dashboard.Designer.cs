@@ -254,6 +254,9 @@ namespace WishlyFurniture_App.MenuForms
             // CalendarDashboard
             // 
             this.CalendarDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
+            this.CalendarDashboard.CausesValidation = false;
+            this.CalendarDashboard.Enabled = false;
+            this.CalendarDashboard.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CalendarDashboard.Location = new System.Drawing.Point(526, 92);
             this.CalendarDashboard.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
             this.CalendarDashboard.MaxSelectionCount = 1;
@@ -261,6 +264,7 @@ namespace WishlyFurniture_App.MenuForms
             this.CalendarDashboard.Name = "CalendarDashboard";
             this.CalendarDashboard.ShowWeekNumbers = true;
             this.CalendarDashboard.TabIndex = 14;
+            this.CalendarDashboard.TabStop = false;
             // 
             // guna2PictureBox1
             // 
@@ -285,7 +289,7 @@ namespace WishlyFurniture_App.MenuForms
             this.cbCabang.FocusedColor = System.Drawing.Color.Empty;
             this.cbCabang.FocusedState.Parent = this.cbCabang;
             this.cbCabang.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbCabang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbCabang.ForeColor = System.Drawing.Color.Gray;
             this.cbCabang.FormattingEnabled = true;
             this.cbCabang.HoverState.Parent = this.cbCabang;
             this.cbCabang.ItemHeight = 30;

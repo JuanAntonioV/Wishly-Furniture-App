@@ -17,19 +17,23 @@ namespace WishlyFurniture_App.MenuForms
             InitializeComponent();
         }
 
-        MainForm Main = new MainForm();
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            (this.ParentForm as MainForm).Hide();
             var LoginForm = new LoginForm();
             LoginForm.Closed += (s, args) => this.Close();
             LoginForm.Show();
-            Main.Hide();
         }
 
+
+        private bool _exit;
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();            
-            Main.Close();
+           if(!_exit && MessageBox.Show("Are you sure want to exit?","Exit",MessageBoxButtons.OKCancel,MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                _exit = true;
+                Environment.Exit(1);
+            }
         }
     }
 }
