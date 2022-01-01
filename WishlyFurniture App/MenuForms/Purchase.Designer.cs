@@ -42,8 +42,6 @@ namespace WishlyFurniture_App.MenuForms
             this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.dgCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.btnPaid = new Guna.UI2.WinForms.Guna2Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +49,8 @@ namespace WishlyFurniture_App.MenuForms
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.btnPaid = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,6 +140,7 @@ namespace WishlyFurniture_App.MenuForms
             // 
             // txtSearchBox
             // 
+            this.txtSearchBox.Animated = true;
             this.txtSearchBox.BorderRadius = 15;
             this.txtSearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearchBox.DefaultText = "";
@@ -155,13 +156,13 @@ namespace WishlyFurniture_App.MenuForms
             this.txtSearchBox.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearchBox.IconLeft")));
             this.txtSearchBox.IconLeftOffset = new System.Drawing.Point(10, 0);
             this.txtSearchBox.IconLeftSize = new System.Drawing.Size(15, 15);
-            this.txtSearchBox.Location = new System.Drawing.Point(242, 2);
+            this.txtSearchBox.Location = new System.Drawing.Point(201, 2);
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.PasswordChar = '\0';
             this.txtSearchBox.PlaceholderText = "Search";
             this.txtSearchBox.SelectedText = "";
             this.txtSearchBox.ShadowDecoration.Parent = this.txtSearchBox;
-            this.txtSearchBox.Size = new System.Drawing.Size(336, 36);
+            this.txtSearchBox.Size = new System.Drawing.Size(377, 36);
             this.txtSearchBox.TabIndex = 18;
             this.txtSearchBox.TextOffset = new System.Drawing.Point(5, 0);
             // 
@@ -276,36 +277,6 @@ namespace WishlyFurniture_App.MenuForms
             this.dgCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(144)))), ((int)(((byte)(206)))));
             this.dgCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Separator1.FillColor = System.Drawing.Color.Gainsboro;
-            this.guna2Separator1.Location = new System.Drawing.Point(-1, 43);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(817, 10);
-            this.guna2Separator1.TabIndex = 3;
-            // 
-            // btnPaid
-            // 
-            this.btnPaid.Animated = true;
-            this.btnPaid.BorderColor = System.Drawing.Color.OrangeRed;
-            this.btnPaid.BorderRadius = 5;
-            this.btnPaid.BorderThickness = 1;
-            this.btnPaid.CheckedState.Parent = this.btnPaid;
-            this.btnPaid.CustomImages.Parent = this.btnPaid;
-            this.btnPaid.FillColor = System.Drawing.Color.Empty;
-            this.btnPaid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaid.ForeColor = System.Drawing.Color.OrangeRed;
-            this.btnPaid.HoverState.FillColor = System.Drawing.Color.OrangeRed;
-            this.btnPaid.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnPaid.HoverState.Parent = this.btnPaid;
-            this.btnPaid.Location = new System.Drawing.Point(676, 483);
-            this.btnPaid.Name = "btnPaid";
-            this.btnPaid.ShadowDecoration.Parent = this.btnPaid;
-            this.btnPaid.Size = new System.Drawing.Size(119, 38);
-            this.btnPaid.TabIndex = 22;
-            this.btnPaid.Text = "Already Paid";
-            // 
             // Column1
             // 
             this.Column1.FillWeight = 90F;
@@ -353,6 +324,36 @@ namespace WishlyFurniture_App.MenuForms
             this.Column7.HeaderText = "Status";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Separator1.FillColor = System.Drawing.Color.Gainsboro;
+            this.guna2Separator1.Location = new System.Drawing.Point(-1, 43);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(817, 10);
+            this.guna2Separator1.TabIndex = 3;
+            // 
+            // btnPaid
+            // 
+            this.btnPaid.Animated = true;
+            this.btnPaid.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnPaid.BorderRadius = 5;
+            this.btnPaid.BorderThickness = 1;
+            this.btnPaid.CheckedState.Parent = this.btnPaid;
+            this.btnPaid.CustomImages.Parent = this.btnPaid;
+            this.btnPaid.FillColor = System.Drawing.Color.Empty;
+            this.btnPaid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaid.ForeColor = System.Drawing.Color.OrangeRed;
+            this.btnPaid.HoverState.FillColor = System.Drawing.Color.OrangeRed;
+            this.btnPaid.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnPaid.HoverState.Parent = this.btnPaid;
+            this.btnPaid.Location = new System.Drawing.Point(676, 483);
+            this.btnPaid.Name = "btnPaid";
+            this.btnPaid.ShadowDecoration.Parent = this.btnPaid;
+            this.btnPaid.Size = new System.Drawing.Size(119, 38);
+            this.btnPaid.TabIndex = 22;
+            this.btnPaid.Text = "Already Paid";
             // 
             // Purchase
             // 

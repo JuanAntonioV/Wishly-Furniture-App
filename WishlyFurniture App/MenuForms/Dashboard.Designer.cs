@@ -44,16 +44,22 @@ namespace WishlyFurniture_App.MenuForms
             this.lblCreditCode = new System.Windows.Forms.Label();
             this.lblTotalBalance = new System.Windows.Forms.Label();
             this.lblJudulBalance = new System.Windows.Forms.Label();
-            this.CalendarDashboard = new System.Windows.Forms.MonthCalendar();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.cbCabang = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlTotalCustomer.SuspendLayout();
             this.pnlTotalEmployee.SuspendLayout();
             this.pnlTotalMaterial.SuspendLayout();
             this.pnlBalance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.gbInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTotalCustomer
@@ -67,7 +73,11 @@ namespace WishlyFurniture_App.MenuForms
             this.pnlTotalCustomer.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.pnlTotalCustomer.Location = new System.Drawing.Point(28, 307);
             this.pnlTotalCustomer.Name = "pnlTotalCustomer";
+            this.pnlTotalCustomer.ShadowDecoration.BorderRadius = 15;
+            this.pnlTotalCustomer.ShadowDecoration.Depth = 20;
+            this.pnlTotalCustomer.ShadowDecoration.Enabled = true;
             this.pnlTotalCustomer.ShadowDecoration.Parent = this.pnlTotalCustomer;
+            this.pnlTotalCustomer.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 5, 6);
             this.pnlTotalCustomer.Size = new System.Drawing.Size(223, 138);
             this.pnlTotalCustomer.TabIndex = 0;
             // 
@@ -97,6 +107,7 @@ namespace WishlyFurniture_App.MenuForms
             // 
             // pnlTotalEmployee
             // 
+            this.pnlTotalEmployee.BackColor = System.Drawing.Color.Transparent;
             this.pnlTotalEmployee.BorderRadius = 15;
             this.pnlTotalEmployee.Controls.Add(this.lblTotalEmployee);
             this.pnlTotalEmployee.Controls.Add(this.lblJudulTotalEmployee);
@@ -105,7 +116,11 @@ namespace WishlyFurniture_App.MenuForms
             this.pnlTotalEmployee.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.pnlTotalEmployee.Location = new System.Drawing.Point(299, 307);
             this.pnlTotalEmployee.Name = "pnlTotalEmployee";
+            this.pnlTotalEmployee.ShadowDecoration.BorderRadius = 15;
+            this.pnlTotalEmployee.ShadowDecoration.Depth = 20;
+            this.pnlTotalEmployee.ShadowDecoration.Enabled = true;
             this.pnlTotalEmployee.ShadowDecoration.Parent = this.pnlTotalEmployee;
+            this.pnlTotalEmployee.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 5, 6);
             this.pnlTotalEmployee.Size = new System.Drawing.Size(223, 138);
             this.pnlTotalEmployee.TabIndex = 2;
             // 
@@ -135,6 +150,7 @@ namespace WishlyFurniture_App.MenuForms
             // 
             // pnlTotalMaterial
             // 
+            this.pnlTotalMaterial.BackColor = System.Drawing.Color.Transparent;
             this.pnlTotalMaterial.BorderRadius = 15;
             this.pnlTotalMaterial.Controls.Add(this.lblTotalMaterial);
             this.pnlTotalMaterial.Controls.Add(this.lblJudulTotalMaterial);
@@ -143,7 +159,11 @@ namespace WishlyFurniture_App.MenuForms
             this.pnlTotalMaterial.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.pnlTotalMaterial.Location = new System.Drawing.Point(565, 307);
             this.pnlTotalMaterial.Name = "pnlTotalMaterial";
+            this.pnlTotalMaterial.ShadowDecoration.BorderRadius = 15;
+            this.pnlTotalMaterial.ShadowDecoration.Depth = 20;
+            this.pnlTotalMaterial.ShadowDecoration.Enabled = true;
             this.pnlTotalMaterial.ShadowDecoration.Parent = this.pnlTotalMaterial;
+            this.pnlTotalMaterial.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 5, 6);
             this.pnlTotalMaterial.Size = new System.Drawing.Size(223, 138);
             this.pnlTotalMaterial.TabIndex = 3;
             // 
@@ -176,7 +196,7 @@ namespace WishlyFurniture_App.MenuForms
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.label7.Location = new System.Drawing.Point(23, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(224, 30);
@@ -188,7 +208,7 @@ namespace WishlyFurniture_App.MenuForms
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.label8.Location = new System.Drawing.Point(24, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(171, 20);
@@ -197,6 +217,7 @@ namespace WishlyFurniture_App.MenuForms
             // 
             // pnlBalance
             // 
+            this.pnlBalance.AutoSize = true;
             this.pnlBalance.BackColor = System.Drawing.Color.Transparent;
             this.pnlBalance.BorderRadius = 25;
             this.pnlBalance.Controls.Add(this.lblCreditCode);
@@ -207,8 +228,11 @@ namespace WishlyFurniture_App.MenuForms
             this.pnlBalance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.pnlBalance.Location = new System.Drawing.Point(28, 92);
             this.pnlBalance.Name = "pnlBalance";
+            this.pnlBalance.ShadowDecoration.BorderRadius = 25;
+            this.pnlBalance.ShadowDecoration.Enabled = true;
             this.pnlBalance.ShadowDecoration.Parent = this.pnlBalance;
-            this.pnlBalance.Size = new System.Drawing.Size(438, 162);
+            this.pnlBalance.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 5, 6);
+            this.pnlBalance.Size = new System.Drawing.Size(429, 162);
             this.pnlBalance.TabIndex = 2;
             // 
             // lblCreditCode
@@ -251,21 +275,6 @@ namespace WishlyFurniture_App.MenuForms
             this.lblJudulBalance.TabIndex = 0;
             this.lblJudulBalance.Text = "Your Balance";
             // 
-            // CalendarDashboard
-            // 
-            this.CalendarDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
-            this.CalendarDashboard.CausesValidation = false;
-            this.CalendarDashboard.Enabled = false;
-            this.CalendarDashboard.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalendarDashboard.Location = new System.Drawing.Point(526, 92);
-            this.CalendarDashboard.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
-            this.CalendarDashboard.MaxSelectionCount = 1;
-            this.CalendarDashboard.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.CalendarDashboard.Name = "CalendarDashboard";
-            this.CalendarDashboard.ShowWeekNumbers = true;
-            this.CalendarDashboard.TabIndex = 14;
-            this.CalendarDashboard.TabStop = false;
-            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -296,10 +305,10 @@ namespace WishlyFurniture_App.MenuForms
             this.cbCabang.Items.AddRange(new object[] {
             "Medan"});
             this.cbCabang.ItemsAppearance.Parent = this.cbCabang;
-            this.cbCabang.Location = new System.Drawing.Point(502, 15);
+            this.cbCabang.Location = new System.Drawing.Point(494, 15);
             this.cbCabang.Name = "cbCabang";
             this.cbCabang.ShadowDecoration.Parent = this.cbCabang;
-            this.cbCabang.Size = new System.Drawing.Size(186, 36);
+            this.cbCabang.Size = new System.Drawing.Size(208, 36);
             this.cbCabang.StartIndex = 0;
             this.cbCabang.TabIndex = 13;
             this.cbCabang.TextOffset = new System.Drawing.Point(10, 0);
@@ -348,6 +357,75 @@ namespace WishlyFurniture_App.MenuForms
             this.btnLogOut.Text = "LOGOUT";
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.label1.Location = new System.Drawing.Point(12, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 25);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Address";
+            // 
+            // gbInfo
+            // 
+            this.gbInfo.Controls.Add(this.label5);
+            this.gbInfo.Controls.Add(this.label4);
+            this.gbInfo.Controls.Add(this.label3);
+            this.gbInfo.Controls.Add(this.label2);
+            this.gbInfo.Controls.Add(this.label1);
+            this.gbInfo.Location = new System.Drawing.Point(494, 89);
+            this.gbInfo.Name = "gbInfo";
+            this.gbInfo.Size = new System.Drawing.Size(294, 165);
+            this.gbInfo.TabIndex = 18;
+            this.gbInfo.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.label2.Location = new System.Drawing.Point(12, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 25);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Phone";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.label3.Location = new System.Drawing.Point(12, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 28);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Jl. Bullish No. 1, Medan";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.label4.Location = new System.Drawing.Point(12, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 28);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "+62 4422 6666";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.label5.Location = new System.Drawing.Point(191, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Wishly Furniture";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,7 +434,6 @@ namespace WishlyFurniture_App.MenuForms
             this.ClientSize = new System.Drawing.Size(814, 543);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.CalendarDashboard);
             this.Controls.Add(this.pnlBalance);
             this.Controls.Add(this.cbCabang);
             this.Controls.Add(this.guna2PictureBox1);
@@ -365,6 +442,7 @@ namespace WishlyFurniture_App.MenuForms
             this.Controls.Add(this.pnlTotalMaterial);
             this.Controls.Add(this.pnlTotalEmployee);
             this.Controls.Add(this.pnlTotalCustomer);
+            this.Controls.Add(this.gbInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
             this.Text = "DashboardForm";
@@ -377,6 +455,8 @@ namespace WishlyFurniture_App.MenuForms
             this.pnlBalance.ResumeLayout(false);
             this.pnlBalance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.gbInfo.ResumeLayout(false);
+            this.gbInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,9 +480,14 @@ namespace WishlyFurniture_App.MenuForms
         private System.Windows.Forms.Label lblCreditCode;
         private System.Windows.Forms.Label lblTotalBalance;
         private System.Windows.Forms.Label lblJudulBalance;
-        private System.Windows.Forms.MonthCalendar CalendarDashboard;
         private Guna.UI2.WinForms.Guna2ComboBox cbCabang;
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbInfo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

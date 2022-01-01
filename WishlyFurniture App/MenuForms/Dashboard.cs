@@ -29,7 +29,7 @@ namespace WishlyFurniture_App.MenuForms
         private bool _exit;
         private void btnExit_Click(object sender, EventArgs e)
         {
-           if(!_exit && MessageBox.Show("Are you sure want to exit?","Exit",MessageBoxButtons.OKCancel,MessageBoxIcon.Information) == DialogResult.OK)
+           if(!_exit && MessageBox.Show("Are you sure want to exit?","Wishly Furniture",MessageBoxButtons.OKCancel,MessageBoxIcon.Information) == DialogResult.OK)
             {
                 _exit = true;
                 Environment.Exit(1);
