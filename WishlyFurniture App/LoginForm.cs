@@ -46,7 +46,7 @@ namespace WishlyFurniture_App
             cmd = new SqlCommand(query, con);
             da = new SqlDataAdapter(cmd);
             da.Fill(ds, "Karyawan");
-            dc[0] = ds.Tables["Karyawan"].Columns[8];
+            dc[0] = ds.Tables["Karyawan"].Columns[9];
             ds.Tables["Karyawan"].PrimaryKey = dc;
         }
 

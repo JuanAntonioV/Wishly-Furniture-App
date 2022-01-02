@@ -29,9 +29,10 @@ namespace WishlyFurniture_App.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTotalCustomer = new System.Windows.Forms.Label();
             this.lblJudulTotalCustomer = new System.Windows.Forms.Label();
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
@@ -40,13 +41,13 @@ namespace WishlyFurniture_App.MenuForms
             this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.dgCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.btnPaid = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearchBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -56,6 +57,7 @@ namespace WishlyFurniture_App.MenuForms
             // lblTotalCustomer
             // 
             this.lblTotalCustomer.AutoSize = true;
+            this.lblTotalCustomer.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalCustomer.Font = new System.Drawing.Font("Poppins", 30F, System.Drawing.FontStyle.Bold);
             this.lblTotalCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.lblTotalCustomer.Location = new System.Drawing.Point(19, -11);
@@ -136,6 +138,7 @@ namespace WishlyFurniture_App.MenuForms
             this.btnDelete.Size = new System.Drawing.Size(119, 38);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnFilter
             // 
@@ -177,62 +180,72 @@ namespace WishlyFurniture_App.MenuForms
             this.btnAdd.Size = new System.Drawing.Size(119, 38);
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgCustomer
             // 
             this.dgCustomer.AllowUserToAddRows = false;
+            this.dgCustomer.AllowUserToDeleteRows = false;
             this.dgCustomer.AllowUserToResizeColumns = false;
             this.dgCustomer.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(205)))), ((int)(((byte)(233)))));
-            this.dgCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCustomer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
             this.dgCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgCustomer.ColumnHeadersHeight = 45;
             this.dgCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column3,
-            this.Column7});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(221)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(144)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CustomerID,
+            this.CustomerName,
+            this.PhoneNumber,
+            this.ProductID,
+            this.qty,
+            this.Address,
+            this.Status});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgCustomer.EnableHeadersVisualStyles = false;
-            this.dgCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(201)))), ((int)(((byte)(231)))));
+            this.dgCustomer.GridColor = System.Drawing.Color.Gainsboro;
             this.dgCustomer.Location = new System.Drawing.Point(12, 50);
             this.dgCustomer.Name = "dgCustomer";
             this.dgCustomer.ReadOnly = true;
             this.dgCustomer.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCustomer.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgCustomer.RowTemplate.Height = 30;
             this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomer.Size = new System.Drawing.Size(783, 418);
+            this.dgCustomer.Size = new System.Drawing.Size(790, 418);
             this.dgCustomer.TabIndex = 21;
-            this.dgCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Amethyst;
-            this.dgCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(205)))), ((int)(((byte)(233)))));
+            this.dgCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgCustomer.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgCustomer.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgCustomer.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgCustomer.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
-            this.dgCustomer.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(201)))), ((int)(((byte)(231)))));
+            this.dgCustomer.ThemeStyle.GridColor = System.Drawing.Color.Gainsboro;
             this.dgCustomer.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(254)))));
             this.dgCustomer.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgCustomer.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,61 +253,68 @@ namespace WishlyFurniture_App.MenuForms
             this.dgCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgCustomer.ThemeStyle.HeaderStyle.Height = 45;
             this.dgCustomer.ThemeStyle.ReadOnly = true;
-            this.dgCustomer.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(221)))), ((int)(((byte)(240)))));
+            this.dgCustomer.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgCustomer.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgCustomer.ThemeStyle.RowsStyle.Height = 22;
-            this.dgCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(144)))), ((int)(((byte)(206)))));
-            this.dgCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgCustomer.ThemeStyle.RowsStyle.Height = 30;
+            this.dgCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // Column1
+            // CustomerID
             // 
-            this.Column1.FillWeight = 90F;
-            this.Column1.HeaderText = "Customer ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.CustomerID.DataPropertyName = "CustomerID";
+            this.CustomerID.FillWeight = 90F;
+            this.CustomerID.HeaderText = "Customer ID";
+            this.CustomerID.Name = "CustomerID";
+            this.CustomerID.ReadOnly = true;
             // 
-            // Column2
+            // CustomerName
             // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.CustomerName.DataPropertyName = "CustomerName";
+            this.CustomerName.HeaderText = "Name";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
             // 
-            // Column4
+            // PhoneNumber
             // 
-            this.Column4.FillWeight = 110F;
-            this.Column4.HeaderText = "Phone Number";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.PhoneNumber.DataPropertyName = "PhoneNumber";
+            this.PhoneNumber.FillWeight = 110F;
+            this.PhoneNumber.HeaderText = "Phone Number";
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.ReadOnly = true;
             // 
-            // Column5
+            // ProductID
             // 
-            this.Column5.FillWeight = 90F;
-            this.Column5.HeaderText = "Product ID";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.ProductID.DataPropertyName = "ProductID";
+            this.ProductID.FillWeight = 90F;
+            this.ProductID.HeaderText = "Product ID";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
             // 
-            // Column6
+            // qty
             // 
-            this.Column6.FillWeight = 50F;
-            this.Column6.HeaderText = "QTY";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.qty.DataPropertyName = "QTY";
+            this.qty.FillWeight = 50F;
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
             // 
-            // Column3
+            // Address
             // 
-            this.Column3.FillWeight = 120F;
-            this.Column3.HeaderText = "Address";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Address.DataPropertyName = "Address";
+            this.Address.FillWeight = 120F;
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
             // 
-            // Column7
+            // Status
             // 
-            this.Column7.FillWeight = 94.17843F;
-            this.Column7.HeaderText = "Status";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.Status.DataPropertyName = "Status";
+            this.Status.FillWeight = 94.17843F;
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // guna2Separator1
             // 
@@ -325,6 +345,7 @@ namespace WishlyFurniture_App.MenuForms
             this.btnPaid.Size = new System.Drawing.Size(119, 38);
             this.btnPaid.TabIndex = 22;
             this.btnPaid.Text = "Already Paid";
+            this.btnPaid.Click += new System.EventHandler(this.btnPaid_Click);
             // 
             // txtSearchBox
             // 
@@ -370,11 +391,12 @@ namespace WishlyFurniture_App.MenuForms
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.lblJudulTotalCustomer);
-            this.Controls.Add(this.lblTotalCustomer);
             this.Controls.Add(this.dgCustomer);
+            this.Controls.Add(this.lblTotalCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Purchase";
             this.Text = "PurchaseForm";
+            this.Load += new System.EventHandler(this.Purchase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -382,8 +404,6 @@ namespace WishlyFurniture_App.MenuForms
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTotalCustomer;
         private System.Windows.Forms.Label lblJudulTotalCustomer;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2Button btnEdit;
@@ -391,15 +411,16 @@ namespace WishlyFurniture_App.MenuForms
         private Guna.UI2.WinForms.Guna2TextBox txtSearchBox;
         private Guna.UI2.WinForms.Guna2Button btnFilter;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
-        private Guna.UI2.WinForms.Guna2DataGridView dgCustomer;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2Button btnPaid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        public System.Windows.Forms.Label lblTotalCustomer;
+        private Guna.UI2.WinForms.Guna2DataGridView dgCustomer;
     }
 }
