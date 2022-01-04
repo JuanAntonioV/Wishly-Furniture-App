@@ -26,8 +26,13 @@ namespace WishlyFurniture_App.AdditionalForms
         private DataSet ds;
         private SqlCommand cmd;
         private SqlDataAdapter da;
+        private DataColumn[] dc = new DataColumn[1];
+        private DataRow dr;
+        private SqlCommandBuilder cb = new SqlCommandBuilder();
 
         #endregion SQL CONECTION CLIENT VARIABEL
+
+        private int total = 0;
 
         private void koneksi()
         {
@@ -37,25 +42,46 @@ namespace WishlyFurniture_App.AdditionalForms
             con.Open();
         }
 
-        private void loadDataCB()
+        private void loadDataCustomer()
         {
-            try
-            {
-                ds = new DataSet();
-                query = "SELECT ProductName, ProductID FROM Product";
-                da = new SqlDataAdapter(query, con);
-                da.Fill(ds, "Product");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            ds = new DataSet();
+            query = "SELECT * FROM Customer";
+            cmd = new SqlCommand(query, con);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(ds, "Customer");
+            dc[0] = ds.Tables["Customer"].Columns[0];
+            ds.Tables["Customer"].PrimaryKey = dc;
+        }
+
+        private void loadDataProduct()
+        {
+            ds = new DataSet();
+            query = "SELECT * FROM Product";
+            cmd = new SqlCommand(query, con);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(ds, "Product");
+            dc[0] = ds.Tables["Product"].Columns[0];
+            ds.Tables["Product"].PrimaryKey = dc;
+        }
+
+        private void updateDataProduct()
+        {
+            cb = new SqlCommandBuilder(da);
+            da = cb.DataAdapter;
+            da.Update(ds.Tables["Product"]);
+        }
+
+        private void updateDataCustomer()
+        {
+            cb = new SqlCommandBuilder(da);
+            da = cb.DataAdapter;
+            da.Update(ds.Tables["Customer"]);
         }
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
             koneksi();
-            loadDataCB();
+            loadDataProduct();
 
             btnSave.Visible = false;
             btnNext.Visible = true;
@@ -66,8 +92,6 @@ namespace WishlyFurniture_App.AdditionalForms
             cbProduct.DisplayMember = "ProductID";
             cbProduct.ValueMember = "ProductID";
             cbProduct.DataSource = ds.Tables["Product"];
-
-            con.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -77,7 +101,7 @@ namespace WishlyFurniture_App.AdditionalForms
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Customer Registration Form Cleared!", "Customer Registration", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Customer Registration Form Cleared!", "Customer Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtCustomerID.Clear();
             txtName.Clear();
             txtPhoneNumber.Clear();
@@ -91,7 +115,7 @@ namespace WishlyFurniture_App.AdditionalForms
 
         private void InputCustomer_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -99,7 +123,6 @@ namespace WishlyFurniture_App.AdditionalForms
             {
                 e.Handled = false;
             }
-
         }
 
         private void InputPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,7 +141,7 @@ namespace WishlyFurniture_App.AdditionalForms
         {
             try
             {
-                cmd = new SqlCommand("INSERT INTO Customer VALUES (@CustomerId, @Name, @PhoneNumber, @ProductID, @QTY, @Address, @Status)", con);
+                cmd = new SqlCommand("INSERT INTO Customer VALUES (@CustomerId, @Name, @PhoneNumber, @ProductID, @QTY, @Address, @Status, @TotalPaid)", con);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@CustomerID", txtCustomerID.Text);
                 cmd.Parameters.AddWithValue("@Name", txtName.Text);
@@ -132,27 +155,12 @@ namespace WishlyFurniture_App.AdditionalForms
 
                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
                 cmd.Parameters.AddWithValue("@Status", "Not Paid");
-                cmd.ExecuteNonQuery();                
+                cmd.Parameters.AddWithValue("@TotalPaid", total);
+                cmd.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void updatingDataStock()
-        {
-            try
-            {
-                cmd = new SqlCommand("UPDATE Product SET Stock = @stock WHERE ProductID = @ID", con);
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(viewStock.Text) - Convert.ToInt32(txtQTY.Text));
-                cmd.Parameters.AddWithValue("@ID", cbProduct.Text);
-                cmd.ExecuteNonQuery();                
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -160,7 +168,7 @@ namespace WishlyFurniture_App.AdditionalForms
         {
             if (txtCustomerID.Text == "")
             {
-                MessageBox.Show("Please input the Customer ID!","Customer Registration",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Please input the Customer ID!", "Customer Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tcCustomerForm.SelectedTab = RegistrationPage;
                 txtCustomerID.Focus();
             }
@@ -188,11 +196,41 @@ namespace WishlyFurniture_App.AdditionalForms
             }
             else
             {
-                koneksi();
-                addingData();
-                updatingDataStock();
-                MessageBox.Show("Data Saved!","Customer Registration Form",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.Hide();
+                try
+                {
+                    string[] cari = { txtCustomerID.Text };
+                    loadDataCustomer();
+                    dr = ds.Tables["Customer"].Rows.Find(cari);
+                    if (dr == null)
+                    {
+                        koneksi();
+                        addingData();
+                        updateDataCustomer();
+
+                        loadDataProduct();
+                        dr = ds.Tables["Product"].Rows.Find(cbProduct.Text);
+                        if (dr != null)
+                        {
+                            dr[2] = (int)dr[2] - Convert.ToInt32(txtQTY.Text);
+                            updateDataProduct();
+                        }
+
+                        MessageBox.Show("Data Saved!", "Customer Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        var customerViewData = new MenuForms.Purchase();
+                        customerViewData.tampilData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data with Customer ID " + txtCustomerID.Text + " is already inputed!", "Customer Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tcCustomerForm.SelectedTab = RegistrationPage;
+                        txtCustomerID.Focus();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
                 con.Close();
             }
         }
@@ -230,7 +268,7 @@ namespace WishlyFurniture_App.AdditionalForms
             cmd = new SqlCommand("SELECT ProductName FROM Product WHERE ProductID = @ID", con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@ID", cbProduct.Text);
-            viewProductName.Text = cmd.ExecuteScalar().ToString();            
+            viewProductName.Text = cmd.ExecuteScalar().ToString();
             viewProductID.Text = cbProduct.Text;
         }
 
@@ -260,7 +298,7 @@ namespace WishlyFurniture_App.AdditionalForms
 
         private void loadDataPrice()
         {
-            cmd = new SqlCommand("SELECT Price FROM Product WHERE ProductID = @ID",con);
+            cmd = new SqlCommand("SELECT Price FROM Product WHERE ProductID = @ID", con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@ID", cbProduct.Text);
             pcsPrice = Convert.ToInt32(cmd.ExecuteScalar().ToString());
@@ -270,44 +308,77 @@ namespace WishlyFurniture_App.AdditionalForms
         {
             koneksi();
             loadDataPrice();
+            loadDataProduct();
+            bool f = false;
 
             if (Convert.ToInt32(txtQTY.Text) > Convert.ToInt32(viewStock.Text))
             {
-                MessageBox.Show("Quantity Tidak Mencukupi!","Purchase Order",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Quantity Tidak Mencukupi!", "Purchase Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                for(int i = 0; i <= dgProduct.Rows.Count; i++)
+                if (dgProduct.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dgProduct.Rows)
+                    {
+                        if (Convert.ToString(row.Cells[0].Value) == cbProduct.Text)
+                        {
+                            row.Cells[2].Value = Convert.ToInt32(txtQTY.Text) + Convert.ToInt32(row.Cells[2].Value);
+
+                            f = true;
+                        }
+                    }
+                    if (!f)
+                    {
+                        dgProduct.Rows.Add(viewProductID.Text, viewProductName.Text, txtQTY.Text, pcsPrice);
+                    }
+                }
+                else
                 {
                     dgProduct.Rows.Add(viewProductID.Text, viewProductName.Text, txtQTY.Text, pcsPrice);
-                    break;
                 }
-                int total = Convert.ToInt32(txtQTY.Text) * pcsPrice;
+
+                total = 0;
+                foreach (DataGridViewRow row1 in dgProduct.Rows)
+                {
+                    TotalPrice.Text = "Rp 0";
+                    for (int i = 0; i < dgProduct.Rows.Count; ++i)
+                    {
+                        total += Convert.ToInt32(row1.Cells[dgProduct.Rows[i].Cells[2].ColumnIndex].Value) * Convert.ToInt32(row1.Cells[dgProduct.Rows[i].Cells[3].ColumnIndex].Value);
+                        break;
+                    }
+                }
                 TotalPrice.Text = total.ToString("Rp #,##0");
             }
-            con.Close();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             pcsPrice = 0;
             TotalPrice.Text = "Rp 0";
-            if(dgProduct.SelectedRows.Count > 0)
+            if (dgProduct.SelectedRows.Count != 1)
             {
-                foreach (DataGridViewRow row in dgProduct.SelectedRows)
-                {
-                    dgProduct.Rows.RemoveAt(row.Index);
-                }
+                MessageBox.Show("Please select the Data to Remove it!");
             }
             else
             {
-                MessageBox.Show("Please select the Data to Remove it!");
+                TotalPrice.Text = "Rp 0";
+                dgProduct.Rows.RemoveAt(dgProduct.SelectedRows[0].Index);
+                total = 0;
+                foreach (DataGridViewRow row1 in dgProduct.Rows)
+                {
+                    for (int i = 0; i < dgProduct.Rows.Count; ++i)
+                    {
+                        total += Convert.ToInt32(row1.Cells[dgProduct.Rows[i].Cells[2].ColumnIndex].Value) * Convert.ToInt32(row1.Cells[dgProduct.Rows[i].Cells[3].ColumnIndex].Value);
+                    }
+                }
+                TotalPrice.Text = total.ToString("Rp #,##0");
             }
         }
 
         private void InputCName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Space))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Space))
             {
                 e.Handled = true;
             }

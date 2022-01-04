@@ -271,9 +271,9 @@ namespace WishlyFurniture_App.MenuForms
             this.lblJudulBalance.ForeColor = System.Drawing.Color.White;
             this.lblJudulBalance.Location = new System.Drawing.Point(21, 21);
             this.lblJudulBalance.Name = "lblJudulBalance";
-            this.lblJudulBalance.Size = new System.Drawing.Size(120, 28);
+            this.lblJudulBalance.Size = new System.Drawing.Size(92, 28);
             this.lblJudulBalance.TabIndex = 0;
-            this.lblJudulBalance.Text = "Your Balance";
+            this.lblJudulBalance.Text = "Total Paid";
             // 
             // guna2PictureBox1
             // 

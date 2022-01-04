@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Guna.UI2.WinForms;
 
 namespace WishlyFurniture_App.MenuForms
 {
@@ -26,8 +27,11 @@ namespace WishlyFurniture_App.MenuForms
         private SqlCommand cmd;
         private string query;
         private DataSet ds;
+        private DataColumn[] dc = new DataColumn[1];
 
         #endregion SQL CONECTION CLIENT VARIABEL
+
+        private AdditionalForms.EditCustomerForm edit = new AdditionalForms.EditCustomerForm();
 
         private void koneksi()
         {
@@ -44,9 +48,11 @@ namespace WishlyFurniture_App.MenuForms
             cmd = new SqlCommand(query, con);
             da = new SqlDataAdapter(cmd);
             da.Fill(ds, "customerData");
+            dc[0] = ds.Tables["customerData"].Columns[0];
+            ds.Tables["customerData"].PrimaryKey = dc;
         }
 
-        private void tampilData()
+        public void tampilData()
         {
             lblTotalCustomer.Text = ds.Tables["customerData"].Rows.Count.ToString();
             dgCustomer.DataSource = ds.Tables["customerData"];
@@ -67,7 +73,6 @@ namespace WishlyFurniture_App.MenuForms
             MessageBox.Show("Record Changes!");
             loadData();
             tampilData();
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -82,10 +87,24 @@ namespace WishlyFurniture_App.MenuForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             var AddCustomer = new AdditionalForms.AddCustomerForm();
             AddCustomer.Closed += (s, args) => this.Close();
             AddCustomer.Show();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int baris = dgCustomer.CurrentCell.RowIndex;
+            edit.txtCustomerID.Text = dgCustomer.Rows[baris].Cells[0].Value.ToString();
+            edit.txtName.Text = dgCustomer.Rows[baris].Cells[1].Value.ToString();
+            edit.txtPhoneNumber.Text = dgCustomer.Rows[baris].Cells[2].Value.ToString();
+
+            foreach (DataGridViewRow row in dgCustomer.Rows)
+            {
+                edit.txtCustomerID.Text = dgCustomer.Rows[baris].Cells[3].Value.ToString();
+
+            }
+
         }
     }
 }
